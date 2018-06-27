@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		3740747820E218DA002C201D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740747720E218DA002C201D /* AppDelegate.swift */; };
-		3740747A20E218DA002C201D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740747920E218DA002C201D /* ViewController.swift */; };
+		3740747A20E218DA002C201D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740747920E218DA002C201D /* MainViewController.swift */; };
 		3740747D20E218DA002C201D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3740747B20E218DA002C201D /* Main.storyboard */; };
 		3740747F20E218DB002C201D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3740747E20E218DB002C201D /* Assets.xcassets */; };
 		3740748220E218DB002C201D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3740748020E218DB002C201D /* LaunchScreen.storyboard */; };
+		3740748B20E22159002C201D /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740748A20E22159002C201D /* ApiManager.swift */; };
+		3740748E20E22202002C201D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740748D20E22202002C201D /* Constants.swift */; };
+		3740749120E226F8002C201D /* CurrencyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740749020E226F8002C201D /* CurrencyProfile.swift */; };
+		3740749420E247F4002C201D /* CurrencyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740749320E247F4002C201D /* CurrencyProfileCell.swift */; };
+		7540327ABB3614E9F36B8DA1 /* Pods_Blocq_io.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6CAF1063B640F6EEA36C33 /* Pods_Blocq_io.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3740747420E218DA002C201D /* Blocq.io.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocq.io.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3740747720E218DA002C201D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3740747920E218DA002C201D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3740747920E218DA002C201D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3740747C20E218DA002C201D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3740747E20E218DB002C201D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3740748120E218DB002C201D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3740748320E218DB002C201D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3740748A20E22159002C201D /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		3740748D20E22202002C201D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3740749020E226F8002C201D /* CurrencyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProfile.swift; sourceTree = "<group>"; };
+		3740749320E247F4002C201D /* CurrencyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProfileCell.swift; sourceTree = "<group>"; };
+		88488C2E912859F381D6BF64 /* Pods-Blocq.io.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocq.io.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io.release.xcconfig"; sourceTree = "<group>"; };
+		8B6CAF1063B640F6EEA36C33 /* Pods_Blocq_io.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blocq_io.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0CF0C5A7354EFA4875681B /* Pods-Blocq.io.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocq.io.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7540327ABB3614E9F36B8DA1 /* Pods_Blocq_io.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +53,8 @@
 			children = (
 				3740747620E218DA002C201D /* Blocq.io */,
 				3740747520E218DA002C201D /* Products */,
+				B561ACBFCE08B11549AAA5C0 /* Pods */,
+				E3FC6A6FB4DBD3F7613437D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +69,67 @@
 		3740747620E218DA002C201D /* Blocq.io */ = {
 			isa = PBXGroup;
 			children = (
+				3740749220E247DC002C201D /* View */,
+				3740748F20E226CC002C201D /* Models */,
+				3740748C20E221EE002C201D /* Resources */,
+				3740748920E21FF4002C201D /* Networking */,
 				3740747720E218DA002C201D /* AppDelegate.swift */,
-				3740747920E218DA002C201D /* ViewController.swift */,
+				3740747920E218DA002C201D /* MainViewController.swift */,
 				3740747B20E218DA002C201D /* Main.storyboard */,
 				3740747E20E218DB002C201D /* Assets.xcassets */,
 				3740748020E218DB002C201D /* LaunchScreen.storyboard */,
 				3740748320E218DB002C201D /* Info.plist */,
 			);
 			path = Blocq.io;
+			sourceTree = "<group>";
+		};
+		3740748920E21FF4002C201D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3740748A20E22159002C201D /* ApiManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		3740748C20E221EE002C201D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3740748D20E22202002C201D /* Constants.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3740748F20E226CC002C201D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3740749020E226F8002C201D /* CurrencyProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3740749220E247DC002C201D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3740749320E247F4002C201D /* CurrencyProfileCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B561ACBFCE08B11549AAA5C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA0CF0C5A7354EFA4875681B /* Pods-Blocq.io.debug.xcconfig */,
+				88488C2E912859F381D6BF64 /* Pods-Blocq.io.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E3FC6A6FB4DBD3F7613437D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B6CAF1063B640F6EEA36C33 /* Pods_Blocq_io.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3740748620E218DB002C201D /* Build configuration list for PBXNativeTarget "Blocq.io" */;
 			buildPhases = (
+				7FD67FD76E659B7437587F88 /* [CP] Check Pods Manifest.lock */,
 				3740747020E218DA002C201D /* Sources */,
 				3740747120E218DA002C201D /* Frameworks */,
 				3740747220E218DA002C201D /* Resources */,
+				64EFF6B768F0A10871BA938F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +200,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		64EFF6B768F0A10871BA938F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FD67FD76E659B7437587F88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Blocq.io-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3740747020E218DA002C201D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3740747A20E218DA002C201D /* ViewController.swift in Sources */,
+				3740749120E226F8002C201D /* CurrencyProfile.swift in Sources */,
+				3740747A20E218DA002C201D /* MainViewController.swift in Sources */,
+				3740748B20E22159002C201D /* ApiManager.swift in Sources */,
 				3740747820E218DA002C201D /* AppDelegate.swift in Sources */,
+				3740749420E247F4002C201D /* CurrencyProfileCell.swift in Sources */,
+				3740748E20E22202002C201D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +393,13 @@
 		};
 		3740748720E218DB002C201D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA0CF0C5A7354EFA4875681B /* Pods-Blocq.io.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A9YN63GW95;
 				INFOPLIST_FILE = Blocq.io/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,11 +413,13 @@
 		};
 		3740748820E218DB002C201D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88488C2E912859F381D6BF64 /* Pods-Blocq.io.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A9YN63GW95;
 				INFOPLIST_FILE = Blocq.io/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
