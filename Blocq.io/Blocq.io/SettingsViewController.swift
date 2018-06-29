@@ -13,6 +13,10 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.barTintColor = Color.mainBlue
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = false
+        navigationItem.title = "Settings"
         // Do any additional setup after loading the view.
     }
 

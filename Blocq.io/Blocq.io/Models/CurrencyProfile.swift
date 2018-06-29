@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct GraphData:Decodable {
+    var price: Double?
+    var row_number: Int?
+}
+
 
 struct Currencies:Decodable {
     var data:[CurrencyProfile]

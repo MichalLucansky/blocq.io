@@ -9,5 +9,5 @@ target 'Blocq.io' do
 	
     pod 'Alamofire', '~> 4.7.2'
     pod 'Kingfisher', '~> 4.8.0'
-
+    pod 'Charts'
 end

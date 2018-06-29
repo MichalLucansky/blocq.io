@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.7.2)
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
+  - Kingfisher (4.8.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7.2)
+  - Charts
+  - Kingfisher (~> 4.8.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Charts
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+
+PODFILE CHECKSUM: 94c3a3d32ee178f169f5aa56f6a8c8781d8451ab
+
+COCOAPODS: 1.5.0

@@ -16,6 +16,7 @@
 		3740748E20E22202002C201D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740748D20E22202002C201D /* Constants.swift */; };
 		3740749120E226F8002C201D /* CurrencyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740749020E226F8002C201D /* CurrencyProfile.swift */; };
 		3740749420E247F4002C201D /* CurrencyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740749320E247F4002C201D /* CurrencyProfileCell.swift */; };
+		3755C22B20E6957B00D2AC9C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755C22A20E6957B00D2AC9C /* DetailViewController.swift */; };
 		377197F820E3F3D300C0A038 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197F720E3F3D300C0A038 /* SettingsViewController.swift */; };
 		377197FA20E4048E00C0A038 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197F920E4048E00C0A038 /* Color.swift */; };
 		377197FD20E40E0A00C0A038 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197FC20E40E0A00C0A038 /* CustomSearchBar.swift */; };
@@ -35,6 +36,7 @@
 		3740748D20E22202002C201D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3740749020E226F8002C201D /* CurrencyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProfile.swift; sourceTree = "<group>"; };
 		3740749320E247F4002C201D /* CurrencyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProfileCell.swift; sourceTree = "<group>"; };
+		3755C22A20E6957B00D2AC9C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		377197F720E3F3D300C0A038 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		377197F920E4048E00C0A038 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		377197FC20E40E0A00C0A038 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				3740748320E218DB002C201D /* Info.plist */,
 				377197F720E3F3D300C0A038 /* SettingsViewController.swift */,
 				377197F920E4048E00C0A038 /* Color.swift */,
+				3755C22A20E6957B00D2AC9C /* DetailViewController.swift */,
 			);
 			path = Blocq.io;
 			sourceTree = "<group>";
@@ -229,11 +232,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3755C22B20E6957B00D2AC9C /* DetailViewController.swift in Sources */,
 				377197FF20E411C700C0A038 /* CustomSearchController.swift in Sources */,
 				3740749120E226F8002C201D /* CurrencyProfile.swift in Sources */,
 				3740747A20E218DA002C201D /* MainViewController.swift in Sources */,
@@ -424,10 +430,7 @@
 				DEVELOPMENT_TEAM = A9YN63GW95;
 				INFOPLIST_FILE = Blocq.io/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sk.michal.lucansky.Blocq-io";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -444,10 +447,7 @@
 				DEVELOPMENT_TEAM = A9YN63GW95;
 				INFOPLIST_FILE = Blocq.io/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sk.michal.lucansky.Blocq-io";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

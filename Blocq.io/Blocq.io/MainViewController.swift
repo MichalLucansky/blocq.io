@@ -32,6 +32,9 @@ class MainViewController: UIViewController {
         self.view.backgroundColor = Color.mainBlue
         favoriteButton.isHighlighted = true
         searchView.backgroundColor = Color.mainBlue
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        navigationItem.titleView?.tintColor = UIColor.white
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,19 +53,18 @@ class MainViewController: UIViewController {
         print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y <= 44 {
                 self.hideViewConstraint.constant = -scrollView.contentOffset.y
-//                customSearchController.isActive = false
-//                customSearchController.customSearchBar.removeFromSuperview()
         }
         
     }
-//    CGRect(CGFloat(0.0), CGFloat(0.0), CGFloat(tableView.frame.size.width), CGFloat(44.0))
+
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: CGFloat(0.0), y: CGFloat(0.0), width: CGFloat(tableView.frame.size.width), height: CGFloat(44.0)), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.white, searchBarTintColor: Color.mainBlue)
         
         customSearchController.customSearchBar.placeholder = "Search"
+        customSearchController.customSearchBar.backgroundImage = UIImage()
         customSearchController.customSearchBar.tintColor = UIColor.white
         customSearchController.customDelegate = self
-          searchView.addSubview(customSearchController.customSearchBar)
+        searchView.addSubview(customSearchController.customSearchBar)
     }
 
     @IBAction func settings(_ sender: UIButton) {
@@ -70,6 +72,7 @@ class MainViewController: UIViewController {
     
     @IBAction func search(_ sender: UIButton) {
         configureCustomSearchController()
+        
     }
     
     @IBAction func showFavourites(_ sender: UIButton) {
@@ -82,6 +85,15 @@ class MainViewController: UIViewController {
         favoriteButton.isHighlighted = true
         isFavourites = false
          tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue"{
+            if let destinationVC = segue.destination as? DetailViewController {
+                guard let profile = sender as? CurrencyProfile else {return}
+                destinationVC.setUpViewModel(currency: profile)
+            }
+        }
     }
     
 }
@@ -105,7 +117,6 @@ extension MainViewController: UISearchResultsUpdating {
 extension MainViewController: CustomSearchControllerDelegate {
     func didStartSearching() {
         shouldShowSearchResults = true
-//        tableView.reloadData()
     }
     
     func didTapOnSearchButton() {
@@ -127,7 +138,6 @@ extension MainViewController: CustomSearchControllerDelegate {
         filteredArray = (xxx?.filter({( currency : CurrencyProfile) -> Bool in
             return (currency.name?.lowercased().contains(searchText.lowercased()))!
         }))!
-        // Reload the tableview.
         tableView.reloadData()
     }
     
@@ -135,7 +145,25 @@ extension MainViewController: CustomSearchControllerDelegate {
 }
 
 extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var data: [CurrencyProfile]
+        if shouldShowSearchResults {
+            data = filteredArray
+        } else {
+            data = xxx!
+        }
+        performSegue(withIdentifier: "detailSegue", sender: data[indexPath.row])
+    }
     
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        var data: [CurrencyProfile]
+        if shouldShowSearchResults {
+            data = filteredArray
+        } else {
+            data = xxx!
+        }
+        performSegue(withIdentifier: "detailSegue", sender: data[indexPath.row])
+    }
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -151,7 +179,7 @@ extension MainViewController: UITableViewDataSource {
         }
         
         if shouldShowSearchResults {
-            return filteredArray.count ?? 0
+            return filteredArray.count
         }
             return xxx?.count ?? 0
         

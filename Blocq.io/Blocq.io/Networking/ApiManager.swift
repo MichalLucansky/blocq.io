@@ -26,4 +26,17 @@ class ApiManager {
             }
         }
     }
+    
+    func getHistory(url: String? = "https://api.blocq.io/history/bitcoin/lastHour" , completion: @escaping ([GraphData]?, Error?)->()) {
+        
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
+            do {
+                let graphData = try JSONDecoder().decode([GraphData].self, from: data.data!)
+                completion(graphData,nil)
+            } catch {
+                completion(nil,data.error)
+                print(data.error?.localizedDescription)
+            }
+        }
+    }
 }
