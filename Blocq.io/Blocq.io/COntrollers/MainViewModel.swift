@@ -12,8 +12,25 @@ import Result
 
 class MainViewModel {
     
+    private var currenciesDataProperty = MutableProperty<[CurrencyProfile]?>(nil)
+    var currenciesData = Signal<[CurrencyProfile]?, NoError>.empty
+    
     init() {
+        currenciesData = currenciesDataProperty.signal
+    }
+    
+    func viewDidLoad(){
         
+        if let offLineCurrenciesData = retrieveCurrencies(){
+            currenciesDataProperty.value =  offLineCurrenciesData
+        }
+        
+        ApiManager.instance.getCurrencyList { [weak self] (currencies, error) in
+            guard error == nil, let data = currencies?.data else {return}
+            let archivedData = self?.archiveCurrencies(currencies: data)
+            self?.saveData(key: "savedOfflineData", archive: archivedData ?? Data())
+            self?.currenciesDataProperty.value = data
+        }
     }
     
     private func saveData(key:String, archive: Data) {
@@ -36,7 +53,7 @@ class MainViewModel {
     }
     
     private func retrieveCurrencies() -> [CurrencyProfile]? {
-        guard let data = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: "savedOfflineData") as! Data) as? Data else { return nil }
+        guard let savedData = UserDefaults.standard.object(forKey: "savedOfflineData") as? Data ,let data = NSKeyedUnarchiver.unarchiveObject(with: savedData) as? Data else { return nil }
         do {
             let products = try PropertyListDecoder().decode([CurrencyProfile].self, from: data)
             return products

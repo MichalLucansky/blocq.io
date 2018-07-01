@@ -16,7 +16,17 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="HRA-I4-HpO">
+                                <rect key="frame" x="67" y="-63" width="240" height="792"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.20069628950000001" green="0.39265215399999998" blue="0.71767979859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="HRA-I4-HpO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LYq-zB-Icv"/>
+                            <constraint firstItem="HRA-I4-HpO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="oPN-iR-2ta"/>
+                            <constraint firstItem="HRA-I4-HpO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qsf-Pi-nOb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -25,4 +35,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logoWhite" width="612" height="792"/>
+    </resources>
 </document>
