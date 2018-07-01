@@ -35,11 +35,13 @@ class DetailViewController: UITableViewController {
     var testSaved: [CurrencyProfile]?
     private var graphData: [GraphData]?
     
+    private var viewModelll = DetailViewModel()
+    
     private var color = [true:UIColor.red, false:UIColor.green]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        bindViewModel()
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = Color.mainBlue
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -51,10 +53,9 @@ class DetailViewController: UITableViewController {
         let url = URL(string: (detailData?.imageUrl)!)
         imageView.kf.setImage(with:url!)
         navigationItem.titleView = titleView
+        viewModelll.loadChartData()
     }
     
-   
-
     private func setColor(value: Double) -> UIColor {
         if value < 0 {
             return UIColor.red
@@ -86,12 +87,10 @@ class DetailViewController: UITableViewController {
     
     private func setUpInfoView(view:UIView){
         createDropShadow(view: view)
-        
         let date = Date(timeIntervalSince1970: Double((detailData?.lastUpdate)!))
         let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "HH:mm dd-MM-yyyy" //Specify your format that you want
+        dateFormatter.dateFormat = "HH:mm dd-MM-yyyy"
         let strDate = dateFormatter.string(from: date)
         
         
@@ -103,37 +102,48 @@ class DetailViewController: UITableViewController {
         tbcPriceValue.text = "\(detailData?.priceBtc ?? 0.0)"
         lastUpdateVAlue.text =  "Last update: " + strDate
     }
-
-    func setUpViewModel(currency: CurrencyProfile) {
-        self.detailData = currency
-        ApiManager.instance.getHistory(name: currency.name!) { (data, error) in
-            guard error == nil else {return}
-             var graph = [ChartDataEntry(x: 0, y: 0)]
-             var graphDataSet = [ChartDataEntry]()
-            for i in data! {
-                let data = ChartDataEntry(x: Double(i.row_number!), y: i.price!)
-                graphDataSet.append(data)
-            }
-  
-            let dataSet = LineChartDataSet(values: graphDataSet, label: nil)
-            dataSet.drawCirclesEnabled = false
-            dataSet.colors = [UIColor.red]
-            dataSet.fillColor = UIColor.red
-            dataSet.drawFilledEnabled = true
-            let chartData = LineChartData(dataSet: dataSet)
-            chartData.setDrawValues(false)
-            
-            self.chartView.leftAxis.drawGridLinesEnabled = false
-            self.chartView.xAxis.drawGridLinesEnabled = false
-            self.chartView.xAxis.granularityEnabled = true
-            self.chartView.xAxis.drawLabelsEnabled = false
-            self.chartView.scaleYEnabled = true
-            self.chartView.scaleYEnabled = true
-            self.chartView.scaleXEnabled = true
-            self.chartView.drawMarkers = false
-            self.chartView.setScaleEnabled(true)
-            self.chartView.data = chartData
+    
+    func bindViewModel(){
+        
+        viewModelll.currencyDetailProperty.producer.start { (data) in
+            guard let data = data.value else {return}
+            self.detailData = data
+        }
+        
+        viewModelll.chartData.observeValues { [weak self](data) in
+            guard let chartData = data else {return}
+            self?.setUpGraph(graphData: chartData)
         }
     }
-
+    
+    private func setUpGraph(graphData: [GraphData]) {
+        var graphDataSet = [ChartDataEntry]()
+        let data = graphData.compactMap{ChartDataEntry(x: Double($0.row_number!), y: $0.price!)}
+        graphDataSet = data
+        
+        let dataSet = LineChartDataSet(values: graphDataSet, label: nil)
+        dataSet.drawCirclesEnabled = false
+        dataSet.colors = [UIColor.red]
+        dataSet.fillColor = UIColor.red
+        dataSet.drawFilledEnabled = true
+        let chartData = LineChartData(dataSet: dataSet)
+        chartData.setDrawValues(false)
+        
+        self.chartView.leftAxis.drawGridLinesEnabled = false
+        self.chartView.xAxis.drawGridLinesEnabled = false
+        self.chartView.xAxis.granularityEnabled = true
+        self.chartView.xAxis.drawLabelsEnabled = false
+        self.chartView.scaleYEnabled = true
+        self.chartView.scaleYEnabled = true
+        self.chartView.scaleXEnabled = true
+        self.chartView.drawMarkers = false
+        self.chartView.setScaleEnabled(true)
+        self.chartView.data = chartData
+        
+    }
+    
+    func setUpViewModel(currency: CurrencyProfile) {
+        viewModelll.loadData(currecyData: currency)
+    }
+    
 }

@@ -22,10 +22,9 @@ class MainViewController: UIViewController {
     var favourites = [String]()
     var isFavourites = false
     var shouldShowSearchResults = false
+    var emptySearch = false
     var customSearchController: CustomSearchController!
-    var nextURL = ""
-    
-
+  
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -141,6 +140,15 @@ extension MainViewController: CustomSearchControllerDelegate {
     }
     
     func didChangeSearchText(searchText: String) {
+       
+        if searchText == "" {
+            emptySearch = true
+            shouldShowSearchResults = false
+        } else {
+            emptySearch = false
+            shouldShowSearchResults = true
+        }
+        
         filteredArray = (currencies?.filter({( currency : CurrencyProfile) -> Bool in
             return (currency.name?.lowercased().contains(searchText.lowercased()))!
         }))!
@@ -184,10 +192,15 @@ extension MainViewController: UITableViewDataSource {
             return favourites.count
         }
         
+        if emptySearch && !shouldShowSearchResults{
+            return currencies?.count ?? 0
+        }
+        
         if shouldShowSearchResults {
             return filteredArray.count
         }
-            return currencies?.count ?? 0
+
+        return currencies?.count ?? 0
         
     }
     
@@ -199,7 +212,12 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
         
         if shouldShowSearchResults {
-            cell?.configure(currency: filteredArray[indexPath.row])
+            if filteredArray.isEmpty {
+                cell?.configure(currency: currencies![indexPath.row])
+            } else {
+                 cell?.configure(currency: filteredArray[indexPath.row])
+            }
+           
         } else {
         cell?.configure(currency: currencies![indexPath.row])
         }
