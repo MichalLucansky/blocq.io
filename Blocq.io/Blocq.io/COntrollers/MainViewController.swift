@@ -41,14 +41,50 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
+        if let nieco = retrieveCurrencies() {
+            self.xxx = nieco
+        }
+        
         ApiManager.instance.getCurrencyList { (currencies, error) in
             guard error == nil else {return}
+            let archivedData = self.archiveCurrencies(currencies: (currencies?.data)!)
+            self.saveData(key: "savedOfflineData", archive: archivedData)
             self.xxx = currencies?.data
             self.nextURL = (currencies?.links.next)!
             self.tableView.reloadData()
         }
     }
+    
+    private func saveData(key:String, archive: Data) {
+            let defaults = UserDefaults.standard
+            defaults.set(archive, forKey: key)
+            defaults.synchronize()
+    }
 
+    private func archiveCurrencies(currencies:[CurrencyProfile]) -> Data {
+        var returnValue = Data()
+            do {
+                let data = try PropertyListEncoder().encode(currencies)
+                let success = NSKeyedArchiver.archivedData(withRootObject: data)
+                returnValue = success
+            } catch {
+                print("Save Failed")
+            }
+   
+        return returnValue
+    }
+    
+    func retrieveCurrencies() -> [CurrencyProfile]? {
+        guard let data = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: "savedOfflineData") as! Data) as? Data else { return nil }
+        do {
+            let products = try PropertyListDecoder().decode([CurrencyProfile].self, from: data)
+            return products
+        } catch {
+            print("Retrieve Failed")
+            return nil
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y <= 44 {

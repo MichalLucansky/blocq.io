@@ -21,6 +21,7 @@
 		377197FA20E4048E00C0A038 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197F920E4048E00C0A038 /* Color.swift */; };
 		377197FD20E40E0A00C0A038 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197FC20E40E0A00C0A038 /* CustomSearchBar.swift */; };
 		377197FF20E411C700C0A038 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197FE20E411C700C0A038 /* CustomSearchController.swift */; };
+		37F8AE4020E8C235006DFFD0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8AE3F20E8C235006DFFD0 /* MainViewModel.swift */; };
 		7540327ABB3614E9F36B8DA1 /* Pods_Blocq_io.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6CAF1063B640F6EEA36C33 /* Pods_Blocq_io.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		377197F920E4048E00C0A038 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		377197FC20E40E0A00C0A038 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		377197FE20E411C700C0A038 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		37F8AE3F20E8C235006DFFD0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		88488C2E912859F381D6BF64 /* Pods-Blocq.io.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocq.io.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io.release.xcconfig"; sourceTree = "<group>"; };
 		8B6CAF1063B640F6EEA36C33 /* Pods_Blocq_io.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blocq_io.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0CF0C5A7354EFA4875681B /* Pods-Blocq.io.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocq.io.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blocq.io/Pods-Blocq.io.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,19 +81,17 @@
 		3740747620E218DA002C201D /* Blocq.io */ = {
 			isa = PBXGroup;
 			children = (
+				37F8AE3E20E8C1FE006DFFD0 /* COntrollers */,
 				3740749220E247DC002C201D /* View */,
 				3740748F20E226CC002C201D /* Models */,
 				3740748C20E221EE002C201D /* Resources */,
 				3740748920E21FF4002C201D /* Networking */,
 				3740747720E218DA002C201D /* AppDelegate.swift */,
-				3740747920E218DA002C201D /* MainViewController.swift */,
 				3740747B20E218DA002C201D /* Main.storyboard */,
 				3740747E20E218DB002C201D /* Assets.xcassets */,
 				3740748020E218DB002C201D /* LaunchScreen.storyboard */,
 				3740748320E218DB002C201D /* Info.plist */,
-				377197F720E3F3D300C0A038 /* SettingsViewController.swift */,
 				377197F920E4048E00C0A038 /* Color.swift */,
-				3755C22A20E6957B00D2AC9C /* DetailViewController.swift */,
 			);
 			path = Blocq.io;
 			sourceTree = "<group>";
@@ -136,6 +136,17 @@
 				377197FE20E411C700C0A038 /* CustomSearchController.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		37F8AE3E20E8C1FE006DFFD0 /* COntrollers */ = {
+			isa = PBXGroup;
+			children = (
+				3740747920E218DA002C201D /* MainViewController.swift */,
+				377197F720E3F3D300C0A038 /* SettingsViewController.swift */,
+				3755C22A20E6957B00D2AC9C /* DetailViewController.swift */,
+				37F8AE3F20E8C235006DFFD0 /* MainViewModel.swift */,
+			);
+			path = COntrollers;
 			sourceTree = "<group>";
 		};
 		B561ACBFCE08B11549AAA5C0 /* Pods */ = {
@@ -234,12 +245,18 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -282,6 +299,7 @@
 				377197FA20E4048E00C0A038 /* Color.swift in Sources */,
 				3740749420E247F4002C201D /* CurrencyProfileCell.swift in Sources */,
 				3740748E20E22202002C201D /* Constants.swift in Sources */,
+				37F8AE4020E8C235006DFFD0 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

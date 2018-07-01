@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="153" width="414" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrecncyCellId" rowHeight="88" id="T1w-7c-ycE" customClass="CurrencyProfileCell" customModule="Blocq_io" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrecncyCellId" rowHeight="88" id="T1w-7c-ycE" customClass="CurrencyProfileCell" customModule="Blocq_io" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T1w-7c-ycE" id="Kxk-AH-14T">
@@ -293,7 +293,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54Q-hM-soL">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54Q-hM-soL" customClass="LineChartView" customModule="Charts">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="174"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -591,6 +591,7 @@
                     </tableView>
                     <connections>
                         <outlet property="availaleSupplyValue" destination="K8S-lH-nbk" id="FRA-BY-Fo3"/>
+                        <outlet property="chartView" destination="54Q-hM-soL" id="ZjG-Cb-L9h"/>
                         <outlet property="dayValueChange" destination="5X7-wf-f83" id="TVa-uL-eAw"/>
                         <outlet property="dayVolumeValue" destination="igm-IO-Y5b" id="Kg5-CR-Mqf"/>
                         <outlet property="hourValueChange" destination="Q8j-AW-PKY" id="rmj-yp-TyZ"/>

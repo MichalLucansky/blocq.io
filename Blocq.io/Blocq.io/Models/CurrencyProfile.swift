@@ -8,22 +8,22 @@
 
 import Foundation
 
-struct GraphData:Decodable {
+struct GraphData:Codable {
     var price: Double?
     var row_number: Int?
 }
 
 
-struct Currencies:Decodable {
+struct Currencies:Codable {
     var data:[CurrencyProfile]
     var links:Paging
 }
 
-struct Paging:Decodable {
+struct Paging:Codable {
     var next:String
 }
 
-struct CurrencyProfile:Decodable {
+struct CurrencyProfile:Codable {
     
     var rank:Int?
     var name:String?

@@ -12,6 +12,7 @@ import Charts
 
 class DetailViewController: UITableViewController {
     
+    @IBOutlet weak var chartView: LineChartView!
     
     @IBOutlet weak var lastUpdateVAlue: UILabel!
     @IBOutlet weak var tbcPriceValue: UILabel!
@@ -31,11 +32,14 @@ class DetailViewController: UITableViewController {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     var detailData: CurrencyProfile?
+    var testSaved: [CurrencyProfile]?
     private var graphData: [GraphData]?
+    
     private var color = [true:UIColor.red, false:UIColor.green]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = Color.mainBlue
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -49,6 +53,8 @@ class DetailViewController: UITableViewController {
         navigationItem.titleView = titleView
     }
     
+   
+
     private func setColor(value: Double) -> UIColor {
         if value < 0 {
             return UIColor.red
@@ -100,8 +106,33 @@ class DetailViewController: UITableViewController {
 
     func setUpViewModel(currency: CurrencyProfile) {
         self.detailData = currency
-        ApiManager.instance.getHistory { (data, error) in
-          self.graphData = data
+        ApiManager.instance.getHistory(name: currency.name!) { (data, error) in
+            guard error == nil else {return}
+             var graph = [ChartDataEntry(x: 0, y: 0)]
+             var graphDataSet = [ChartDataEntry]()
+            for i in data! {
+                let data = ChartDataEntry(x: Double(i.row_number!), y: i.price!)
+                graphDataSet.append(data)
+            }
+  
+            let dataSet = LineChartDataSet(values: graphDataSet, label: nil)
+            dataSet.drawCirclesEnabled = false
+            dataSet.colors = [UIColor.red]
+            dataSet.fillColor = UIColor.red
+            dataSet.drawFilledEnabled = true
+            let chartData = LineChartData(dataSet: dataSet)
+            chartData.setDrawValues(false)
+            
+            self.chartView.leftAxis.drawGridLinesEnabled = false
+            self.chartView.xAxis.drawGridLinesEnabled = false
+            self.chartView.xAxis.granularityEnabled = true
+            self.chartView.xAxis.drawLabelsEnabled = false
+            self.chartView.scaleYEnabled = true
+            self.chartView.scaleYEnabled = true
+            self.chartView.scaleXEnabled = true
+            self.chartView.drawMarkers = false
+            self.chartView.setScaleEnabled(true)
+            self.chartView.data = chartData
         }
     }
 
