@@ -10,16 +10,20 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
   
     @IBOutlet weak var navigationVIew: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var hideViewConstraint: NSLayoutConstraint!
+    
+    private let favouritesDefaults = UserDefaults.standard
+    
     let viewModel = MainViewModel()
     var currencies: [CurrencyProfile]?
     var filteredArray = [CurrencyProfile]()
     var favourites = [String]()
+    var isShowingFavourites = false
     var isFavourites = false
     var shouldShowSearchResults = false
     var emptySearch = false
@@ -36,7 +40,37 @@ class MainViewController: UIViewController {
         searchView.backgroundColor = Color.mainBlue
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         navigationItem.titleView?.tintColor = UIColor.white
+//
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
+        if let ggg = favouritesDefaults.value(forKey: "Favourites") as? [String] {
+            favourites = ggg
+        }
+        
         bindViewModel()
+    }
+    
+   @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer) {
+        let p = longPressGesture.location(in: self.tableView)
+    var currencyName = ""
+    guard let indexPath = self.tableView.indexPathForRow(at: p) else {return}
+    if shouldShowSearchResults {
+        currencyName = filteredArray[indexPath.row].symbol!
+    } else {
+        currencyName = currencies![indexPath.row].symbol!
+    }
+    
+    favourites.append(currencyName)
+        if (longPressGesture.state == UIGestureRecognizerState.began) {
+            favourites.append(currencyName)
+            let set = Set(favourites)
+            let final = Array(set)
+            favouritesDefaults.set(final, forKey: "Favourites")
+            favouritesDefaults.synchronize()
+            print("Long press on row, at \(indexPath.row)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -163,6 +197,10 @@ extension MainViewController: UITableViewDelegate {
         var data: [CurrencyProfile]
         if shouldShowSearchResults {
             data = filteredArray
+        } else if isFavourites {
+            let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
+            let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
+            data = favouritesArray!
         } else {
             data = currencies!
         }
@@ -189,7 +227,9 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFavourites {
-            return favourites.count
+//            return favourites.count
+            let xxx = favouritesDefaults.value(forKey: "Favourites") as? [String]
+            return xxx?.count ?? 0
         }
         
         if emptySearch && !shouldShowSearchResults{
@@ -206,7 +246,10 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isFavourites {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
+            let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
+            let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
+            cell?.configure(currency: favouritesArray![indexPath.row])
             return cell ?? UITableViewCell()
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell

@@ -28,9 +28,7 @@ class ApiManager {
     }
     
     func getHistory(name: String , completion: @escaping ([GraphData]?, Error?)->()) {
-        
-        let url = "https://api.blocq.io/history/\(name)/lastWeek?target=eur"
-        
+        let url = "https://api.blocq.io/history/\(name.replacingOccurrences(of: " ", with: ""))/lastWeek?target=eur"
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
             do {
                 let graphData = try JSONDecoder().decode([GraphData].self, from: data.data!)
