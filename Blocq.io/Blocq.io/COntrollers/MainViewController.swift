@@ -62,6 +62,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         currencyName = currencies![indexPath.row].symbol!
     }
     
+    if isFavourites {
+        let new = favourites.filter{$0 != currencyName}
+        favouritesDefaults.set(new, forKey: "Favourites")
+        favouritesDefaults.synchronize()
+        tableView.reloadData()
+    }
+    
     favourites.append(currencyName)
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             favourites.append(currencyName)
@@ -184,9 +191,8 @@ extension MainViewController: CustomSearchControllerDelegate {
         }
         
         if isFavourites {
-            let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
-            let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
-            print(favouritesArray)
+            guard let temp = favouritesDefaults.value(forKey: "Favourites") as? [String] else {return}
+            let favouritesArray = currencies?.filter{(temp.contains($0.symbol!))}
             filteredArray = (favouritesArray?.filter({( currency : CurrencyProfile) -> Bool in
                 return (currency.name?.lowercased().contains(searchText.lowercased()))!
             }))!
@@ -260,8 +266,6 @@ extension MainViewController: UITableViewDataSource {
         if isFavourites {
             if shouldShowSearchResults{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
-//                let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
-//                let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
                 cell?.configure(currency: filteredArray[indexPath.row])
                 return cell ?? UITableViewCell()
             } else {

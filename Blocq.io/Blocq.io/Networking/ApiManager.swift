@@ -14,11 +14,11 @@ class ApiManager {
     static let instance:ApiManager = ApiManager()
     
     func getCurrencyList(completion: @escaping (Currencies?, Error?)->()) {
-//        let url = Constants.baseUrl + "/ticker?perPage=30&target=eur"
         let currency = UserDefaults.standard
         var currencyValue = ""
         if let curr = currency.value(forKey: "settingscurrency") as? String{
             currencyValue = curr
+            print(currencyValue)
         }
         let url = "https://api.blocq.io//ticker?perPage=1568&target=\(currencyValue)&page=1"
 

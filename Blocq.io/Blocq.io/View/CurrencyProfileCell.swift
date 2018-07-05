@@ -14,6 +14,7 @@ class CurrencyProfileCell: UITableViewCell {
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var picture: UIImageView!
     
+    @IBOutlet weak var priceChangeView: UIView!
     @IBOutlet weak var currencyId: UILabel!
     @IBOutlet weak var currencyName: UILabel!
     @IBOutlet weak var price: UILabel!
@@ -40,10 +41,10 @@ class CurrencyProfileCell: UITableViewCell {
         }
         
         if let price = currency.price {
-            self.price.text = currency.target! + "\(price)"
+            self.price.text = currency.target! + " \(price)"
         }
         let timeInterval = UserDefaults.standard
-        var timeParameter = ""
+        var timeParameter = "lastHour"
         if let time = timeInterval.value(forKey: "settingsTimeInterval") as? String{
             timeParameter = time
         }
@@ -51,21 +52,30 @@ class CurrencyProfileCell: UITableViewCell {
         case "lastHour":
             if let priceChange = currency.percentChange1h {
                 self.priceChange.text = "\(priceChange)"
+                self.priceChangeView.backgroundColor = self.setColor(value: priceChange)
+                
             }
         case "lastDay":
             if let priceChange = currency.percentChange24h {
                 self.priceChange.text = "\(priceChange)"
+                self.priceChangeView.backgroundColor = self.setColor(value: priceChange)
             }
         case "lastWeek":
             if let priceChange = currency.percentChange7d {
                 self.priceChange.text = "\(priceChange)"
+                self.priceChangeView.backgroundColor = self.setColor(value: priceChange)
             }
         default:
             break
         }
-        
-       
 
+    }
+    
+    private func setColor(value: Double) -> UIColor {
+        if value < 0 {
+            return UIColor.red
+        }
+        return UIColor.green
     }
     
 }
