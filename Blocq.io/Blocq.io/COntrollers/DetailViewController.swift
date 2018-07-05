@@ -34,18 +34,33 @@ class DetailViewController: UITableViewController {
     var detailData: CurrencyProfile?
     var testSaved: [CurrencyProfile]?
     private var graphData: [GraphData]?
-    
+    var favourites = [String]()
     private var viewModelll = DetailViewModel()
+    let favouriteBtn: UIButton = UIButton(type: UIButtonType.custom)
+    private var favouritesDefaults = UserDefaults.standard
+    private var isFavourite = false
     
     private var color = [true:UIColor.red, false:UIColor.green]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let ggg = favouritesDefaults.value(forKey: "Favourites") as? [String] {
+            favourites = ggg
+        }
+        
         bindViewModel()
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = Color.mainBlue
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
+        favouriteBtn.setImage(#imageLiteral(resourceName: "heartBasic"), for: .normal)
+        if isFavourite {
+            favouriteBtn.imageView?.tintColor = UIColor.orange
+        }
+        favouriteBtn.addTarget(self, action: #selector(setFavourites), for: UIControlEvents.touchUpInside)
+        favouriteBtn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        let favouriteButton = UIBarButtonItem(customView: favouriteBtn)
+        navigationItem.rightBarButtonItem = favouriteButton
         setUpPriceView(view: priceView)
         setUpValueChangeView(view: valueChangeView)
         setUpInfoView(view: infoView)
@@ -54,6 +69,26 @@ class DetailViewController: UITableViewController {
         imageView.kf.setImage(with:url!)
         navigationItem.titleView = titleView
         viewModelll.loadChartData()
+    }
+    
+    @objc func setFavourites() {
+        favouriteBtn.isSelected = true
+        if isFavourite {
+            favouriteBtn.imageView?.tintColor = UIColor.white
+            let new = favourites.filter{$0 != detailData?.symbol}
+            favouritesDefaults.set(new, forKey: "Favourites")
+            favouritesDefaults.synchronize()
+            
+        } else {
+            favouriteBtn.imageView?.tintColor = UIColor.orange
+            
+            favourites.append((detailData?.symbol)!)
+            let set = Set(favourites)
+            let final = Array(set)
+            favouritesDefaults.set(final, forKey: "Favourites")
+            favouritesDefaults.synchronize()
+        }
+        
     }
     
     private func setColor(value: Double) -> UIColor {
@@ -107,6 +142,7 @@ class DetailViewController: UITableViewController {
         
         viewModelll.currencyDetailProperty.producer.start { (data) in
             guard let data = data.value else {return}
+            self.isFavourite = self.favourites.contains((data?.symbol)!)
             self.detailData = data
         }
         
@@ -145,5 +181,4 @@ class DetailViewController: UITableViewController {
     func setUpViewModel(currency: CurrencyProfile) {
         viewModelll.loadData(currecyData: currency)
     }
-    
 }

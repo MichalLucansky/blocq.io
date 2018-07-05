@@ -42,9 +42,29 @@ class CurrencyProfileCell: UITableViewCell {
         if let price = currency.price {
             self.price.text = currency.target! + "\(price)"
         }
-        if let priceChange = currency.percentChange1h {
-            self.priceChange.text = "\(priceChange)"
+        let timeInterval = UserDefaults.standard
+        var timeParameter = ""
+        if let time = timeInterval.value(forKey: "settingsTimeInterval") as? String{
+            timeParameter = time
         }
+        switch  timeParameter {
+        case "lastHour":
+            if let priceChange = currency.percentChange1h {
+                self.priceChange.text = "\(priceChange)"
+            }
+        case "lastDay":
+            if let priceChange = currency.percentChange24h {
+                self.priceChange.text = "\(priceChange)"
+            }
+        case "lastWeek":
+            if let priceChange = currency.percentChange7d {
+                self.priceChange.text = "\(priceChange)"
+            }
+        default:
+            break
+        }
+        
+       
 
     }
     

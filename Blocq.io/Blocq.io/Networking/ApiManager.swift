@@ -13,10 +13,16 @@ class ApiManager {
 //    22
     static let instance:ApiManager = ApiManager()
     
-    func getCurrencyList(url: String? = "https://api.blocq.io//ticker?perPage=1568&target=eur&page=1" , completion: @escaping (Currencies?, Error?)->()) {
+    func getCurrencyList(completion: @escaping (Currencies?, Error?)->()) {
 //        let url = Constants.baseUrl + "/ticker?perPage=30&target=eur"
+        let currency = UserDefaults.standard
+        var currencyValue = ""
+        if let curr = currency.value(forKey: "settingscurrency") as? String{
+            currencyValue = curr
+        }
+        let url = "https://api.blocq.io//ticker?perPage=1568&target=\(currencyValue)&page=1"
 
-        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
             do {
                 let currencies = try JSONDecoder().decode(Currencies.self, from: data.data!)
                 completion(currencies,nil)
@@ -28,7 +34,12 @@ class ApiManager {
     }
     
     func getHistory(name: String , completion: @escaping ([GraphData]?, Error?)->()) {
-        let url = "https://api.blocq.io/history/\(name.replacingOccurrences(of: " ", with: ""))/lastWeek?target=eur"
+        let timeInterval = UserDefaults.standard
+        var timeParameter = ""
+        if let time = timeInterval.value(forKey: "settingsTimeInterval") as? String{
+            timeParameter = time
+        }
+        let url = "https://api.blocq.io/history/\(name.replacingOccurrences(of: " ", with: ""))/\(timeParameter)?target=eur"
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
             do {
                 let graphData = try JSONDecoder().decode([GraphData].self, from: data.data!)
