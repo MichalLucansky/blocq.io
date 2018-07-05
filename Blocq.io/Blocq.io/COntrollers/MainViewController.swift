@@ -183,9 +183,19 @@ extension MainViewController: CustomSearchControllerDelegate {
             shouldShowSearchResults = true
         }
         
-        filteredArray = (currencies?.filter({( currency : CurrencyProfile) -> Bool in
-            return (currency.name?.lowercased().contains(searchText.lowercased()))!
-        }))!
+        if isFavourites {
+            let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
+            let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
+            print(favouritesArray)
+            filteredArray = (favouritesArray?.filter({( currency : CurrencyProfile) -> Bool in
+                return (currency.name?.lowercased().contains(searchText.lowercased()))!
+            }))!
+            print(filteredArray)
+        } else {
+            filteredArray = (currencies?.filter({( currency : CurrencyProfile) -> Bool in
+                return (currency.name?.lowercased().contains(searchText.lowercased()))!
+            }))!
+        }
         tableView.reloadData()
     }
     
@@ -227,7 +237,9 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFavourites {
-//            return favourites.count
+            if shouldShowSearchResults {
+                return filteredArray.count
+            }
             let xxx = favouritesDefaults.value(forKey: "Favourites") as? [String]
             return xxx?.count ?? 0
         }
@@ -246,11 +258,20 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isFavourites {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
-            let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
-            let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
-            cell?.configure(currency: favouritesArray![indexPath.row])
-            return cell ?? UITableViewCell()
+            if shouldShowSearchResults{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
+//                let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
+//                let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
+                cell?.configure(currency: filteredArray[indexPath.row])
+                return cell ?? UITableViewCell()
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
+                let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
+                let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
+                cell?.configure(currency: favouritesArray![indexPath.row])
+                return cell ?? UITableViewCell()
+            }
+           
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
         
