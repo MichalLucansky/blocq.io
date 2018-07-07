@@ -27,26 +27,22 @@ class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let timeConversion = ["lastHour":"Hour","lastDay":"Day","lastWeek":"Weak"]
+        let timeConversion = ["lastHour":"Hour".localized,"lastDay":"Day".localized,"lastWeek":"Weak".localized]
         let timeInterval = UserDefaults.standard
         let currency = UserDefaults.standard
-//        let currencyParameter = currency.value(forKey: "settingscurrency") as? String
-//        let timeParameter = timeInterval.value(forKey: "settingsTimeInterval") as? String
         if let time = timeInterval.value(forKey: "settingsTimeInterval") as? String{
             self.timeLabel.text = timeConversion[time]
-        }
+        } 
+        
         if let currency = currency.value(forKey: "settingscurrency") as? String {
             self.currencyLabel.text = currency
         }
-        //timeParameter
-        
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = Color.mainBlue
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
-        navigationItem.title = "Settings"
+        navigationItem.title = "Settings".localized
         tableView.tableFooterView = UIView()
-        // Do any additional setup after loading the view.
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -60,24 +56,24 @@ class SettingsViewController: UITableViewController {
     
     func changeSettingsAlert(settings: SettingsType){
         let title: String
-        let hour = UIAlertAction(title: "Hour", style: .default) { [weak self](action:UIAlertAction) in
+        let hour = UIAlertAction(title: "Hour".localized, style: .default) { [weak self](action:UIAlertAction) in
             self?.settingsTimeInterval.set("lastHour", forKey: "settingsTimeInterval")
             self?.settingsTimeInterval.synchronize()
-            self?.timeLabel.text = "Hour"
+            self?.timeLabel.text = "Hour".localized
             self?.tableView.reloadData()
             self?.delegate?.refresh()
         }
-        let day = UIAlertAction(title: "Day", style: .default) { [weak self] (action:UIAlertAction) in
+        let day = UIAlertAction(title: "Day".localized, style: .default) { [weak self] (action:UIAlertAction) in
             self?.settingsTimeInterval.set("lastDay", forKey: "settingsTimeInterval")
             self?.settingsTimeInterval.synchronize()
-            self?.timeLabel.text = "Day"
+            self?.timeLabel.text = "Day".localized
             self?.tableView.reloadData()
             self?.delegate?.refresh()
         }
-        let weak = UIAlertAction(title: "Weak", style: .default) { [weak self] (action:UIAlertAction) in
+        let weak = UIAlertAction(title: "Weak".localized, style: .default) { [weak self] (action:UIAlertAction) in
             self?.settingsTimeInterval.set("lastWeek", forKey: "settingsTimeInterval")
             self?.settingsTimeInterval.synchronize()
-            self?.timeLabel.text = "Weak"
+            self?.timeLabel.text = "Weak".localized
             self?.tableView.reloadData()
             self?.delegate?.refresh()
         }
@@ -118,13 +114,13 @@ class SettingsViewController: UITableViewController {
             self?.delegate?.refresh()
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         
         switch settings {
         case .currency:
-            title = "Preferred currency"
+            title = "Preferred currency".localized
         case .timeInterval:
-            title = "Display percentage change"
+            title = "Display percentage change".localized
         }
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)

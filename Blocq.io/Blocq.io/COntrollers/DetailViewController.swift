@@ -135,7 +135,7 @@ class DetailViewController: UITableViewController {
         availaleSupplyValue.text = (detailData?.target)! + "\(detailData?.availableSupply ?? 0)"
         tatalSupplyValue.text = (detailData?.target)! + "\(detailData?.totalSupply ?? 0)"
         tbcPriceValue.text = "\(detailData?.priceBtc ?? 0.0)"
-        lastUpdateVAlue.text =  "Last update: " + strDate
+        lastUpdateVAlue.text =  "Last update:".localized + strDate
     }
     
     func bindViewModel(){

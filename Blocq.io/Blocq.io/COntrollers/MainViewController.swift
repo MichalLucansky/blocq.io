@@ -76,7 +76,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
             let final = Array(set)
             favouritesDefaults.set(final, forKey: "Favourites")
             favouritesDefaults.synchronize()
-            print("Long press on row, at \(indexPath.row)")
         }
     }
     
@@ -106,7 +105,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: CGFloat(0.0), y: CGFloat(0.0), width: CGFloat(tableView.frame.size.width), height: CGFloat(44.0)), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.white, searchBarTintColor: Color.mainBlue)
         
-        customSearchController.customSearchBar.placeholder = "Search"
+        customSearchController.customSearchBar.placeholder = NSLocalizedString("Search", comment: "")//"Search".localized
         customSearchController.customSearchBar.backgroundImage = UIImage()
         customSearchController.customSearchBar.tintColor = UIColor.white
         customSearchController.customDelegate = self

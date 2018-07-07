@@ -1,0 +1,111 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "02O-xc-29V"; */
+"02O-xc-29V.text" = "Label";
+
+/* Class = "UILabel"; text = "Day"; ObjectID = "0YT-hA-ulJ"; */
+"0YT-hA-ulJ.text" = "Deň";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1ne-CA-IgP"; */
+"1ne-CA-IgP.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "29b-Hp-n9t"; */
+"29b-Hp-n9t.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5X7-wf-f83"; */
+"5X7-wf-f83.text" = "Label";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "9u9-RG-qPg"; */
+"9u9-RG-qPg.text" = "USD";
+
+/* Class = "UILabel"; text = "Price(TBC)"; ObjectID = "EDa-rR-ptD"; */
+"EDa-rR-ptD.text" = "Cena(TBC)";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EaY-FN-cSO"; */
+"EaY-FN-cSO.text" = "Label";
+
+/* Class = "UILabel"; text = "Weak"; ObjectID = "GOr-ef-d7g"; */
+"GOr-ef-d7g.text" = "Týždeň";
+
+/* Class = "UILabel"; text = "Percentage change"; ObjectID = "JG6-Ha-z7w"; */
+"JG6-Ha-z7w.text" = "Percentuálna zmena";
+
+/* Class = "UILabel"; text = "Display percentage change"; ObjectID = "JnJ-LX-8Ry"; */
+"JnJ-LX-8Ry.text" = "Zobrazená percentuálna zmena";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "K8S-lH-nbk"; */
+"K8S-lH-nbk.text" = "Label";
+
+/* Class = "UILabel"; text = "Hour"; ObjectID = "N6U-ib-xl1"; */
+"N6U-ib-xl1.text" = "Hodina";
+
+/* Class = "UILabel"; text = "Hour"; ObjectID = "NDS-Qb-tN8"; */
+"NDS-Qb-tN8.text" = "Hodina";
+
+/* Class = "UILabel"; text = "Available supply"; ObjectID = "NHn-qa-PDo"; */
+"NHn-qa-PDo.text" = "Zásoba v obehu";
+
+/* Class = "UILabel"; text = "Total supply"; ObjectID = "Pji-Jq-rEh"; */
+"Pji-Jq-rEh.text" = "Celkové zásoby";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Q8j-AW-PKY"; */
+"Q8j-AW-PKY.text" = "Label";
+
+/* Class = "UILabel"; text = "N/a"; ObjectID = "VRA-j9-kpV"; */
+"VRA-j9-kpV.text" = "N/a";
+
+/* Class = "UITableViewSection"; headerTitle = "User preferences"; ObjectID = "Vr6-yA-tLx"; */
+"Vr6-yA-tLx.headerTitle" = "Uživateľske nastavenia";
+
+/* Class = "UIBarButtonItem"; title = "Settings"; ObjectID = "WFP-dR-pDm"; */
+"WFP-dR-pDm.title" = "Nastavenia";
+
+/* Class = "UILabel"; text = "Rank"; ObjectID = "YAc-NY-tBl"; */
+"YAc-NY-tBl.text" = "Poradie";
+
+/* Class = "UILabel"; text = "Market capital"; ObjectID = "Z9M-gz-q2C"; */
+"Z9M-gz-q2C.text" = "Trhová kapitalizácia";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "d7f-8P-Qe3"; */
+"d7f-8P-Qe3.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "FAVORITE"; ObjectID = "eXZ-2N-7KO"; */
+"eXZ-2N-7KO.normalTitle" = "OBĽÚBENÉ";
+
+/* Class = "UILabel"; text = "N/a"; ObjectID = "hgI-C7-xij"; */
+"hgI-C7-xij.text" = "N/a";
+
+/* Class = "UIButton"; normalTitle = "ALL"; ObjectID = "hrp-EX-HDC"; */
+"hrp-EX-HDC.normalTitle" = "VŠETKY";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "igm-IO-Y5b"; */
+"igm-IO-Y5b.text" = "Label";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "lrn-u0-I8w"; */
+"lrn-u0-I8w.text" = "1";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nTV-Up-DrL"; */
+"nTV-Up-DrL.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "p19-fT-zGA"; */
+"p19-fT-zGA.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sIK-2s-PLg"; */
+"sIK-2s-PLg.text" = "Label";
+
+/* Class = "UILabel"; text = "Last updata:"; ObjectID = "tBq-1e-ZOQ"; */
+"tBq-1e-ZOQ.text" = "Posledná aktualizacia:";
+
+/* Class = "UILabel"; text = "N/a"; ObjectID = "tb1-1p-VoC"; */
+"tb1-1p-VoC.text" = "N/a";
+
+/* Class = "UILabel"; text = "Preffered currency"; ObjectID = "xGn-Xq-0up"; */
+"xGn-Xq-0up.text" = "Preferovaná mena";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xqC-uG-fEw"; */
+"xqC-uG-fEw.text" = "Label";
+
+/* Class = "UILabel"; text = "24h volume"; ObjectID = "yaD-lB-D0J"; */
+"yaD-lB-D0J.text" = "24h objem";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "zdw-it-d05"; */
+"zdw-it-d05.text" = "Info";

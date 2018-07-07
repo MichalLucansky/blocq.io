@@ -18,7 +18,6 @@ class ApiManager {
         var currencyValue = ""
         if let curr = currency.value(forKey: "settingscurrency") as? String{
             currencyValue = curr
-            print(currencyValue)
         }
         let url = "https://api.blocq.io//ticker?perPage=1568&target=\(currencyValue)&page=1"
 

@@ -1,0 +1,16 @@
+/* 
+  English.strings
+  Blocq.io
+
+  Created by Michal Lučanský on 7.7.18.
+  Copyright © 2018 Blocq.io. All rights reserved.
+*/
+
+"Search" = "Search";
+"Preferred currency" = "Preferred currency";
+"Display percentage change" = "Display percentage change";
+"Cancel" = "Cancel";
+"Weak" = "Weak";
+"Day" = "Day";
+"Hour" = "Hour";
+"Last update: " = "Last update: ";

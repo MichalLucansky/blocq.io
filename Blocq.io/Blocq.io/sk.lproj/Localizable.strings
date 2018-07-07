@@ -1,0 +1,17 @@
+/* 
+  Slovak.strings
+  Blocq.io
+
+  Created by Michal Lučanský on 7.7.18.
+  Copyright © 2018 Blocq.io. All rights reserved.
+*/
+
+"Search" = "Hľadaj";
+"Settings" = "Nastavenia";
+"Preferred currency" = "Preferovaná mena";
+"Display percentage change" = "Zobrazenie percentuálnej zmeny";
+"Cancel" = "Zrušiť";
+"Weak" = "Týždeň";
+"Day" = "Deň";
+"Hour" = "Hodina";
+"Last update: " = "Posledná aktualizácia: ";
