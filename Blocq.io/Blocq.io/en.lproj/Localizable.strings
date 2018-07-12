@@ -13,4 +13,6 @@
 "Weak" = "Weak";
 "Day" = "Day";
 "Hour" = "Hour";
-"Last update: " = "Last update: ";
+"LastUpdate:" = "Last update: ";
+"NoSearchResults" = "No search results.";
+"NoFavourites" = "You have no favourites, yet";

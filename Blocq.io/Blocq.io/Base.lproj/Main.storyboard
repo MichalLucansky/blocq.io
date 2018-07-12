@@ -94,6 +94,7 @@
                                             <constraints>
                                                 <constraint firstItem="Uf0-0i-5It" firstAttribute="centerY" secondItem="tb1-1p-VoC" secondAttribute="centerY" id="03s-uN-pFK"/>
                                                 <constraint firstItem="XW0-rB-4IR" firstAttribute="leading" secondItem="tb1-1p-VoC" secondAttribute="trailing" constant="8" id="8Go-ue-ZWX"/>
+                                                <constraint firstItem="xqC-uG-fEw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VRA-j9-kpV" secondAttribute="trailing" constant="8" id="CrJ-RP-1bb"/>
                                                 <constraint firstItem="tb1-1p-VoC" firstAttribute="leading" secondItem="Kxk-AH-14T" secondAttribute="leading" constant="15" id="N4a-rQ-vhz"/>
                                                 <constraint firstItem="qzw-I4-ZJF" firstAttribute="trailing" secondItem="Kxk-AH-14T" secondAttribute="trailingMargin" id="NO4-8n-Qqb"/>
                                                 <constraint firstItem="Uf0-0i-5It" firstAttribute="leading" secondItem="XW0-rB-4IR" secondAttribute="trailing" constant="8" id="Ppt-OE-fFx"/>
@@ -168,6 +169,23 @@
                                     <constraint firstItem="p19-fT-zGA" firstAttribute="top" secondItem="DCm-AS-znh" secondAttribute="top" id="tjB-fk-9CS"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUA-VB-oOH">
+                                <rect key="frame" x="20" y="304" width="374" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Žiadne výsledky hľadania" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14n-aR-zRk">
+                                        <rect key="frame" x="90.666666666666671" y="53.333333333333314" width="193.33333333333331" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="14n-aR-zRk" firstAttribute="centerX" secondItem="gUA-VB-oOH" secondAttribute="centerX" id="TaO-U3-mnq"/>
+                                    <constraint firstItem="14n-aR-zRk" firstAttribute="centerY" secondItem="gUA-VB-oOH" secondAttribute="centerY" id="b3G-3o-atp"/>
+                                    <constraint firstAttribute="height" constant="128" id="nGc-lb-xOE"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raY-d2-Buw">
                                 <rect key="frame" x="0.0" y="108" width="414" height="44"/>
                                 <subviews>
@@ -211,11 +229,15 @@
                             <constraint firstItem="it7-ot-uXC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IGx-1b-IC3"/>
                             <constraint firstItem="raY-d2-Buw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mr9-tY-Xk4"/>
                             <constraint firstItem="b8V-xA-iAq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NAP-PP-JZ4"/>
+                            <constraint firstItem="gUA-VB-oOH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Skb-Dv-9y9"/>
                             <constraint firstItem="raY-d2-Buw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ykw-GB-bc6"/>
                             <constraint firstItem="b8V-xA-iAq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eZL-pe-dSL"/>
+                            <constraint firstItem="gUA-VB-oOH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="edj-FO-8pJ"/>
                             <constraint firstItem="it7-ot-uXC" firstAttribute="top" secondItem="raY-d2-Buw" secondAttribute="bottom" constant="1" id="j81-Ne-SgE"/>
                             <constraint firstItem="b8V-xA-iAq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jxD-6d-6Sr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gUA-VB-oOH" secondAttribute="trailing" constant="20" id="kmC-R2-Ud2"/>
                             <constraint firstItem="raY-d2-Buw" firstAttribute="top" secondItem="b8V-xA-iAq" secondAttribute="bottom" id="pJ9-KX-055"/>
+                            <constraint firstItem="gUA-VB-oOH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uSK-zy-9jp"/>
                             <constraint firstItem="it7-ot-uXC" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wa4-5i-YTe"/>
                             <constraint firstItem="b8V-xA-iAq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zBr-TO-PK9"/>
                         </constraints>
@@ -226,6 +248,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="allButton" destination="hrp-EX-HDC" id="SVm-U6-Yfj"/>
+                        <outlet property="emptyStateLabel" destination="14n-aR-zRk" id="YPK-w8-FKc"/>
+                        <outlet property="emptyStateView" destination="gUA-VB-oOH" id="Y9b-yG-KQC"/>
                         <outlet property="favoriteButton" destination="eXZ-2N-7KO" id="Puf-2I-smG"/>
                         <outlet property="hideViewConstraint" destination="pJ9-KX-055" id="23z-dW-Jc6"/>
                         <outlet property="navigationVIew" destination="raY-d2-Buw" id="Fdu-6o-0lw"/>

@@ -13,6 +13,8 @@ import ReactiveSwift
 class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
   
+    @IBOutlet weak var emptyStateLabel: UILabel!
+    @IBOutlet weak var emptyStateView: UIView!
     @IBOutlet weak var navigationVIew: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var hideViewConstraint: NSLayoutConstraint!
@@ -34,6 +36,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         navigationVIew.backgroundColor = Color.mainBlue
         self.view.backgroundColor = Color.mainBlue
         favoriteButton.isHighlighted = true
@@ -46,6 +49,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         longPressGesture.delegate = self
         self.tableView.addGestureRecognizer(longPressGesture)
         if let ggg = favouritesDefaults.value(forKey: "Favourites") as? [String] {
+            print(ggg)
             favourites = ggg
         }
         
@@ -58,25 +62,36 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     guard let indexPath = self.tableView.indexPathForRow(at: p) else {return}
     if shouldShowSearchResults {
         currencyName = filteredArray[indexPath.row].symbol!
-    } else {
-        currencyName = currencies![indexPath.row].symbol!
-    }
-    
-    if isFavourites {
-        let new = favourites.filter{$0 != currencyName}
-        favouritesDefaults.set(new, forKey: "Favourites")
-        favouritesDefaults.synchronize()
-        tableView.reloadData()
-    }
-    
-    favourites.append(currencyName)
-        if (longPressGesture.state == UIGestureRecognizerState.began) {
-            favourites.append(currencyName)
-            let set = Set(favourites)
-            let final = Array(set)
-            favouritesDefaults.set(final, forKey: "Favourites")
-            favouritesDefaults.synchronize()
+    } else if isFavourites{
+        if let ggg = favouritesDefaults.value(forKey: "Favourites") as? [String] {
+            favourites = ggg
+            let favouritesArray = currencies?.filter{(favourites.contains($0.symbol!))}
+            currencyName = favouritesArray![indexPath.row].symbol!
         }
+    } else {
+         currencyName = currencies![indexPath.row].symbol!
+    }
+        if (longPressGesture.state == UIGestureRecognizerState.began) {
+            
+            if isFavourites {
+                let new = favourites.filter{$0 != currencyName}
+                let set = Set(new)
+                var final = Array(set)
+                if final.isEmpty {
+                    final.removeAll()
+                }
+                favouritesDefaults.set(final, forKey: "Favourites")
+                favouritesDefaults.synchronize()
+                favourites = []
+            } else {
+                favourites.append(currencyName)
+                let set = Set(favourites)
+                let final = Array(set)
+                favouritesDefaults.set(final, forKey: "Favourites")
+                favouritesDefaults.synchronize()
+            }
+        }
+     tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,6 +205,7 @@ extension MainViewController: CustomSearchControllerDelegate {
         }
         
         if isFavourites {
+            
             guard let temp = favouritesDefaults.value(forKey: "Favourites") as? [String] else {return}
             let favouritesArray = currencies?.filter{(temp.contains($0.symbol!))}
             filteredArray = (favouritesArray?.filter({( currency : CurrencyProfile) -> Bool in
@@ -241,22 +257,34 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyStateLabel.text = "NoSearchResults".localized
         if isFavourites {
+            emptyStateLabel.text = "NoFavourites".localized
             if shouldShowSearchResults {
                 return filteredArray.count
             }
-            let xxx = favouritesDefaults.value(forKey: "Favourites") as? [String]
-            return xxx?.count ?? 0
+            guard let xxx = favouritesDefaults.value(forKey: "Favourites") as? [String] else {emptyStateView.isHidden = false
+                return 0
+            }
+            
+            emptyStateView.isHidden = !xxx.isEmpty 
+            return xxx.count
         }
         
         if emptySearch && !shouldShowSearchResults{
+             emptyStateView.isHidden = (!(currencies?.isEmpty)!)
             return currencies?.count ?? 0
         }
         
         if shouldShowSearchResults {
+            emptyStateView.isHidden = (!(filteredArray.isEmpty))
             return filteredArray.count
         }
-
+        
+        if currencies == nil {
+            emptyStateView.isHidden = false
+        }
+        emptyStateView.isHidden = (!((currencies?.isEmpty) ?? false))
         return currencies?.count ?? 0
         
     }
@@ -271,6 +299,7 @@ extension MainViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
                 let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
                 let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
+                print(favouritesArray)
                 cell?.configure(currency: favouritesArray![indexPath.row])
                 return cell ?? UITableViewCell()
             }

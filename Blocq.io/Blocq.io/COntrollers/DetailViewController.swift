@@ -72,12 +72,13 @@ class DetailViewController: UITableViewController {
     }
     
     @objc func setFavourites() {
-        favouriteBtn.isSelected = true
+//        favouriteBtn.isSelected = true
         if isFavourite {
             favouriteBtn.imageView?.tintColor = UIColor.white
             let new = favourites.filter{$0 != detailData?.symbol}
             favouritesDefaults.set(new, forKey: "Favourites")
             favouritesDefaults.synchronize()
+            isFavourite = false
             
         } else {
             favouriteBtn.imageView?.tintColor = UIColor.orange
@@ -87,6 +88,7 @@ class DetailViewController: UITableViewController {
             let final = Array(set)
             favouritesDefaults.set(final, forKey: "Favourites")
             favouritesDefaults.synchronize()
+            isFavourite = true
         }
         
     }
@@ -107,7 +109,7 @@ class DetailViewController: UITableViewController {
     
     private func setUpPriceView(view: UIView){
         createDropShadow(view: view)
-        priceLabel.text = (detailData?.target)! + "\(detailData?.price ?? 0.0)"
+        priceLabel.text = (detailData?.target)! + String(format: "%.3f", locale: Locale.current, Double(detailData?.price ?? 0.0))//"\(detailData?.price ?? 0.0)"
     }
     
     private func setUpValueChangeView(view:UIView){
@@ -130,12 +132,12 @@ class DetailViewController: UITableViewController {
         
         
         rankValue.text = "\(detailData?.rank ?? 0)"
-        dayVolumeValue.text = (detailData?.target)! + "\(detailData?.dayVolume ?? 0.0)"
-        marketCapitalValue.text = (detailData?.target)! + "\(detailData?.marketCap ?? 0)"
-        availaleSupplyValue.text = (detailData?.target)! + "\(detailData?.availableSupply ?? 0)"
-        tatalSupplyValue.text = (detailData?.target)! + "\(detailData?.totalSupply ?? 0)"
-        tbcPriceValue.text = "\(detailData?.priceBtc ?? 0.0)"
-        lastUpdateVAlue.text =  "Last update:".localized + strDate
+        dayVolumeValue.text = (detailData?.target)! + String(format: "%.3f", locale: Locale.current, Double(detailData?.dayVolume ?? 0.0))//"\(detailData?.dayVolume ?? 0.0)"
+        marketCapitalValue.text = (detailData?.target)! + String(format: "%.3f", locale: Locale.current, Double(detailData?.marketCap ?? 0))//"\(detailData?.marketCap ?? 0)"
+        availaleSupplyValue.text = (detailData?.target)! + String(format: "%.3f", locale: Locale.current, Double(detailData?.availableSupply ?? 0))//"\(detailData?.availableSupply ?? 0)"
+        tatalSupplyValue.text = (detailData?.target)! + String(format: "%.3f", locale: Locale.current, Double(detailData?.totalSupply ?? 0))//"\(detailData?.totalSupply ?? 0)"
+        tbcPriceValue.text = String(format: "%.3f", locale: Locale.current, Double(detailData?.priceBtc ?? 0.0))//"\(detailData?.priceBtc ?? 0.0)"
+        lastUpdateVAlue.text =  "LastUpdate:".localized + strDate
     }
     
     func bindViewModel(){
@@ -164,7 +166,10 @@ class DetailViewController: UITableViewController {
         dataSet.drawFilledEnabled = true
         let chartData = LineChartData(dataSet: dataSet)
         chartData.setDrawValues(false)
-        
+    
+        self.chartView.chartDescription = nil
+        let l = self.chartView.legend
+        l.form = .none
         self.chartView.leftAxis.drawGridLinesEnabled = false
         self.chartView.xAxis.drawGridLinesEnabled = false
         self.chartView.xAxis.granularityEnabled = true

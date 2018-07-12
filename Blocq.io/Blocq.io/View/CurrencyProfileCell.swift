@@ -41,7 +41,7 @@ class CurrencyProfileCell: UITableViewCell {
         }
         
         if let price = currency.price {
-            self.price.text = currency.target! + " \(price)"
+            self.price.text = currency.target! + String(format: "%.3f", locale: Locale.current, Double(price))
         }
         let timeInterval = UserDefaults.standard
         var timeParameter = "lastHour"
@@ -51,18 +51,18 @@ class CurrencyProfileCell: UITableViewCell {
         switch  timeParameter {
         case "lastHour":
             if let priceChange = currency.percentChange1h {
-                self.priceChange.text = "\(priceChange)"
+                self.priceChange.text = "\(priceChange) %"
                 self.priceChangeView.backgroundColor = self.setColor(value: priceChange)
                 
             }
         case "lastDay":
             if let priceChange = currency.percentChange24h {
-                self.priceChange.text = "\(priceChange)"
+                self.priceChange.text = "\(priceChange) %"
                 self.priceChangeView.backgroundColor = self.setColor(value: priceChange)
             }
         case "lastWeek":
             if let priceChange = currency.percentChange7d {
-                self.priceChange.text = "\(priceChange)"
+                self.priceChange.text = "\(priceChange) %"
                 self.priceChangeView.backgroundColor = self.setColor(value: priceChange)
             }
         default:
