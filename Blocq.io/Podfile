@@ -10,7 +10,9 @@ target 'Blocq.io' do
     pod 'Alamofire', '~> 4.7.2'
     pod 'Kingfisher', '~> 4.8.0'
     pod 'Charts'
+    pod 'SwiftMessages', '~> 4.1.0'
     #Reactive
     pod 'ReactiveCocoa', '~> 7.0.1'
     pod 'ReactiveSwift', '~> 3.0.0'
+
 end

@@ -32,7 +32,9 @@ class DetailViewModel {
     func loadChartData() {
         guard let name = currencyDetailProperty.value?.name else {return}
         ApiManager.instance.getHistory(name: name) { (data, error) in
-            guard error == nil else {return}
+            guard error == nil else {
+              UserMessage.error.show(message: error?.localizedDescription ?? "")
+                return}
             self.chartDataProperty.value = data
         }
     }

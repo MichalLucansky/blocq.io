@@ -17,6 +17,8 @@
 		3740749120E226F8002C201D /* CurrencyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740749020E226F8002C201D /* CurrencyProfile.swift */; };
 		3740749420E247F4002C201D /* CurrencyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740749320E247F4002C201D /* CurrencyProfileCell.swift */; };
 		3755C22B20E6957B00D2AC9C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3755C22A20E6957B00D2AC9C /* DetailViewController.swift */; };
+		375C9AD9210DBC2600284C7E /* UserMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C9AD8210DBC2600284C7E /* UserMessages.swift */; };
+		375C9ADB210DBF6500284C7E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C9ADA210DBF6500284C7E /* Extensions.swift */; };
 		377197F820E3F3D300C0A038 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197F720E3F3D300C0A038 /* SettingsViewController.swift */; };
 		377197FA20E4048E00C0A038 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197F920E4048E00C0A038 /* Color.swift */; };
 		377197FD20E40E0A00C0A038 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377197FC20E40E0A00C0A038 /* CustomSearchBar.swift */; };
@@ -42,6 +44,8 @@
 		3740749020E226F8002C201D /* CurrencyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProfile.swift; sourceTree = "<group>"; };
 		3740749320E247F4002C201D /* CurrencyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProfileCell.swift; sourceTree = "<group>"; };
 		3755C22A20E6957B00D2AC9C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		375C9AD8210DBC2600284C7E /* UserMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessages.swift; sourceTree = "<group>"; };
+		375C9ADA210DBF6500284C7E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		377197F720E3F3D300C0A038 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		377197F920E4048E00C0A038 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		377197FC20E40E0A00C0A038 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				37C4B01A20F0BEDE00337E0E /* Localizable.strings */,
 				37C4B01520F0BEC400337E0E /* Localizable.strings */,
 				37C4B01B20F0BF4000337E0E /* StringExtension.swift */,
+				375C9AD8210DBC2600284C7E /* UserMessages.swift */,
+				375C9ADA210DBF6500284C7E /* Extensions.swift */,
 			);
 			path = Blocq.io;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -273,6 +280,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -315,6 +323,8 @@
 				37C4B01C20F0BF4000337E0E /* StringExtension.swift in Sources */,
 				377197FA20E4048E00C0A038 /* Color.swift in Sources */,
 				37F8AE4220E8D5C3006DFFD0 /* DetailViewModel.swift in Sources */,
+				375C9ADB210DBF6500284C7E /* Extensions.swift in Sources */,
+				375C9AD9210DBC2600284C7E /* UserMessages.swift in Sources */,
 				3740749420E247F4002C201D /* CurrencyProfileCell.swift in Sources */,
 				3740748E20E22202002C201D /* Constants.swift in Sources */,
 				37F8AE4020E8C235006DFFD0 /* MainViewModel.swift in Sources */,

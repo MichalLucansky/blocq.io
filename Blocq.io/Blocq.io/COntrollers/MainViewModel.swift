@@ -26,7 +26,9 @@ class MainViewModel {
         }
         
         ApiManager.instance.getCurrencyList { [weak self] (currencies, error) in
-            guard error == nil, let data = currencies?.data else {return}
+            guard error == nil, let data = currencies?.data else {
+            UserMessage.error.show(message: error?.localizedDescription ?? "")
+                return}
             let archivedData = self?.archiveCurrencies(currencies: data)
             self?.saveData(key: "savedOfflineData", archive: archivedData ?? Data())
             self?.currenciesDataProperty.value = data
