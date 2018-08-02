@@ -60,10 +60,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzw-I4-ZJF">
-                                                    <rect key="frame" x="344" y="32" width="50" height="24"/>
+                                                    <rect key="frame" x="334" y="32" width="60" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7f-8P-Qe3">
-                                                            <rect key="frame" x="0.0" y="0.3333333333333357" width="50" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.3333333333333357" width="60" height="24"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="0WC-g4-ovK"/>
+                                                        <constraint firstAttribute="width" constant="60" id="0WC-g4-ovK"/>
                                                         <constraint firstAttribute="trailing" secondItem="d7f-8P-Qe3" secondAttribute="trailing" id="Fa0-AV-miq"/>
                                                         <constraint firstAttribute="height" constant="24" id="Jbk-om-eCv"/>
                                                         <constraint firstItem="d7f-8P-Qe3" firstAttribute="top" secondItem="qzw-I4-ZJF" secondAttribute="top" id="icx-Oi-C1q"/>
@@ -85,7 +85,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqC-uG-fEw">
-                                                    <rect key="frame" x="294.33333333333331" y="33.666666666666664" width="41.666666666666686" height="20.333333333333336"/>
+                                                    <rect key="frame" x="284.33333333333331" y="33.666666666666664" width="41.666666666666686" height="20.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -106,6 +106,7 @@
                                                 <constraint firstItem="tb1-1p-VoC" firstAttribute="centerY" secondItem="Kxk-AH-14T" secondAttribute="centerY" id="zMX-IF-feQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.29280598958333331" green="0.75675455729166663" blue="0.048312717013888888" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="currencyId" destination="hgI-C7-xij" id="Ljo-iJ-zbf"/>
                                             <outlet property="currencyName" destination="VRA-j9-kpV" id="Kqo-4g-AkS"/>
@@ -203,7 +204,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXZ-2N-7KO">
                                                 <rect key="frame" x="199" y="0.0" width="199" height="30"/>
-                                                <state key="normal" title="FAVORITE"/>
+                                                <state key="normal" title="FAVOURITES"/>
                                                 <connections>
                                                     <action selector="showFavourites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XKU-qE-AgI"/>
                                                 </connections>

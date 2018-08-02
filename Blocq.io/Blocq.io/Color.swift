@@ -24,4 +24,5 @@ import UIKit
 //183
 struct Color {
     static let mainBlue = UIColor(r: 55, g: 100, b: 183)
+    static let mainGreen = UIColor(r: 75, g: 193, b: 12)
 }

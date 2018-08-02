@@ -39,7 +39,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         tableView.tableFooterView = UIView()
         navigationVIew.backgroundColor = Color.mainBlue
         self.view.backgroundColor = Color.mainBlue
-        favoriteButton.isHighlighted = true
+//        favoriteButton.isHighlighted = true
+        favoriteButton.setTitleColor(.lightGray, for: .normal)
+        allButton.setTitleColor(.white, for: .normal)
         searchView.backgroundColor = Color.mainBlue
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         navigationItem.titleView?.tintColor = UIColor.white
@@ -136,13 +138,18 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func showFavourites(_ sender: UIButton) {
-        allButton.isHighlighted = true
+//        allButton.isHighlighted = true
+        favoriteButton.setTitleColor(.white, for: .normal)
+        allButton.setTitleColor(.lightGray, for: .normal)
+        
         isFavourites = true
         tableView.reloadData()
         
     }
     @IBAction func allCurrencies(_ sender: UIButton) {
-        favoriteButton.isHighlighted = true
+//        favoriteButton.isHighlighted = true
+        favoriteButton.setTitleColor(.lightGray, for: .normal)
+        allButton.setTitleColor(.white, for: .normal)
         isFavourites = false
          tableView.reloadData()
     }
@@ -299,7 +306,7 @@ extension MainViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CurrecncyCellId") as? CurrencyProfileCell
                 let temp = favouritesDefaults.value(forKey: "Favourites") as? [String]
                 let favouritesArray = currencies?.filter{(temp?.contains($0.symbol!))!}
-                print(favouritesArray)
+
                 cell?.configure(currency: favouritesArray![indexPath.row])
                 return cell ?? UITableViewCell()
             }

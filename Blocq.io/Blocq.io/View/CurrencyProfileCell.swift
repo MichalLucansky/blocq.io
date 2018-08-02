@@ -75,7 +75,7 @@ class CurrencyProfileCell: UITableViewCell {
         if value < 0 {
             return UIColor.red
         }
-        return UIColor.green
+        return Color.mainGreen
     }
     
 }

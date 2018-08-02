@@ -198,6 +198,7 @@
 				3740747120E218DA002C201D /* Frameworks */,
 				3740747220E218DA002C201D /* Resources */,
 				64EFF6B768F0A10871BA938F /* [CP] Embed Pods Frameworks */,
+				37211DB9210F98E100616946 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,6 +258,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		37211DB9210F98E100616946 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 00c9fd22a319ef43965daa28226fabc6401b160c a2c38b1b573b9e4cd82ef2416cd30410eb3bfbebd147740fad21529226282a82";
+		};
 		64EFF6B768F0A10871BA938F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -492,7 +506,8 @@
 			baseConfigurationReference = DA0CF0C5A7354EFA4875681B /* Pods-Blocq.io.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = A9YN63GW95;
 				INFOPLIST_FILE = Blocq.io/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -502,6 +517,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sk.michal.lucansky.Blocq-io";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c053e2f5-2b9e-4259-a33d-4ac1ab40df41";
+				PROVISIONING_PROFILE_SPECIFIER = blocq;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -512,7 +529,8 @@
 			baseConfigurationReference = 88488C2E912859F381D6BF64 /* Pods-Blocq.io.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = A9YN63GW95;
 				INFOPLIST_FILE = Blocq.io/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -522,6 +540,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sk.michal.lucansky.Blocq-io";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c053e2f5-2b9e-4259-a33d-4ac1ab40df41";
+				PROVISIONING_PROFILE_SPECIFIER = blocq;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

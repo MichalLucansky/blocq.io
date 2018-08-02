@@ -14,5 +14,7 @@ target 'Blocq.io' do
     #Reactive
     pod 'ReactiveCocoa', '~> 7.0.1'
     pod 'ReactiveSwift', '~> 3.0.0'
+    pod 'Fabric'
+    pod 'Crashlytics'
 
 end
