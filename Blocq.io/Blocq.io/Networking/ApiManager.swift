@@ -22,21 +22,12 @@ class ApiManager {
         let url = "https://api.blocq.io//ticker?perPage=1568&target=\(currencyValue)&page=1"
 
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
-            
-//            if data.error != nil {
-//
-//                ApiManager.instance.getCurrencyList(completion: { (c, e) in
-//                 completion(c,nil)
-//                })
-//            } else {
             do {
                 let currencies = try JSONDecoder().decode(Currencies.self, from: data.data!)
                 completion(currencies,nil)
             } catch {
                 completion(nil,data.error)
-                print(data.error?.localizedDescription)
             }
-//            }
         }
     }
     
@@ -46,14 +37,18 @@ class ApiManager {
         if let time = timeInterval.value(forKey: "settingsTimeInterval") as? String{
             timeParameter = time
         }
-        let url = "https://api.blocq.io/history/\(name.replacingOccurrences(of: " ", with: ""))/\(timeParameter)?target=eur"
+        let currency = UserDefaults.standard
+        var currencyValue = ""
+        if let curr = currency.value(forKey: "settingscurrency") as? String{
+            currencyValue = curr
+        }
+        let url = "https://api.blocq.io/history/\(name.replacingOccurrences(of: " ", with: ""))/\(timeParameter)?target=\(currencyValue)"
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseData { (data) in
             do {
                 let graphData = try JSONDecoder().decode([GraphData].self, from: data.data!)
                 completion(graphData,nil)
             } catch {
                 completion(nil,data.error)
-                print(data.error?.localizedDescription)
             }
         }
     }

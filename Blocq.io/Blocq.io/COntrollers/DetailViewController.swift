@@ -97,7 +97,7 @@ class DetailViewController: UITableViewController {
         if value < 0 {
             return UIColor.red
         }
-        return UIColor.green
+        return Color.mainGreen
     }
     
     private func createDropShadow(view: UIView) {
