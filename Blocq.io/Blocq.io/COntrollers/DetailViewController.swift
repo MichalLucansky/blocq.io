@@ -65,10 +65,10 @@ class DetailViewController: UITableViewController {
         setUpValueChangeView(view: valueChangeView)
         setUpInfoView(view: infoView)
         nameLabel.text = (detailData?.name)! + "(\(detailData?.symbol ?? ""))"
-        let url = URL(string: (detailData?.imageUrl)!)
-        imageView.kf.setImage(with:url!)
         navigationItem.titleView = titleView
         viewModelll.loadChartData()
+        guard let urlString = detailData?.imageUrl, let url = URL(string:urlString) else { return }
+        imageView.kf.setImage(with:url)
     }
     
     @objc func setFavourites() {

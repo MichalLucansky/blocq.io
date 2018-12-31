@@ -20,7 +20,7 @@ struct Currencies:Codable {
 }
 
 struct Paging:Codable {
-    var next:String
+    var next:String?
 }
 
 struct CurrencyProfile:Codable {
